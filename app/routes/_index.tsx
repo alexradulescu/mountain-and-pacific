@@ -25,6 +25,11 @@ export default function Index() {
             Forgot
           </Link>
         </li>
+        <li>
+          <Link prefetch="intent" to="/countries">
+            Countries
+          </Link>
+        </li>
       </ul>
       <ul>
         <li>

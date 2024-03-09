@@ -1,7 +1,11 @@
 import './index.css'
 
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
+
+const queryClient = new QueryClient()
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +17,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <main>{children}</main>
+        <QueryClientProvider client={queryClient}>
+          <main>{children}</main>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
         <ScrollRestoration />
         <Scripts />
         <Analytics />
