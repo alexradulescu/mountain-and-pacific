@@ -1,6 +1,7 @@
 import './index.css'
 
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import { Analytics } from '@vercel/analytics/react'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,6 +16,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <main>{children}</main>
         <ScrollRestoration />
         <Scripts />
+        <Analytics />
       </body>
     </html>
   )
