@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node'
+import { Link } from '@remix-run/react'
 
 export const meta: MetaFunction = () => {
   return [{ title: 'New Remix SPA' }, { name: 'description', content: 'Welcome to Remix (SPA Mode)!' }]
@@ -6,8 +7,25 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <main>
+    <>
       <h1>Welcome to Remix (SPA Mode)</h1>
+      <ul>
+        <li>
+          <Link prefetch="intent" to="/login">
+            Login
+          </Link>
+        </li>
+        <li>
+          <Link prefetch="intent" to="/register">
+            Register
+          </Link>
+        </li>
+        <li>
+          <Link prefetch="intent" to="/forgot">
+            Forgot
+          </Link>
+        </li>
+      </ul>
       <ul>
         <li>
           <a target="_blank" href="https://remix.run/future/spa-mode" rel="noreferrer">
@@ -20,6 +38,6 @@ export default function Index() {
           </a>
         </li>
       </ul>
-    </main>
+    </>
   )
 }
