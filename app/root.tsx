@@ -1,10 +1,6 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+import './index.css'
+
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -21,13 +17,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  );
+  )
 }
 
 export default function App() {
-  return <Outlet />;
+  return <Outlet />
 }
 
 export function HydrateFallback() {
-  return <p>Loading...</p>;
+  return <p>Loading...</p>
 }
