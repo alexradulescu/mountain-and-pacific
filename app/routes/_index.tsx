@@ -30,6 +30,16 @@ export default function Index() {
             Countries
           </Link>
         </li>
+        <li>
+          <Link prefetch="intent" to="/components">
+            Components
+          </Link>
+        </li>
+        <li>
+          <Link prefetch="intent" to="/taxes">
+            Taxes
+          </Link>
+        </li>
       </ul>
       <ul>
         <li>
