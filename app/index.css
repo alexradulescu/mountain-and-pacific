@@ -67,9 +67,8 @@
   --cerise-red-900: #801b40;
   --cerise-red-950: #470a1f;
 
-  --font-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
-  --font-sans: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
-    sans-serif;
+  --font-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+  --font-sans: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
 
   --text-primary: black;
   --text-inverted: white;
@@ -140,7 +139,7 @@
 
 :where(body) {
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
   font-variant-numeric: tabular-nums;
   color: var(--text-secondary);
   background-color: var(--bg-backstage);
@@ -153,8 +152,12 @@
 
 :where(button, input, select, textarea, optgroup) {
   font: inherit;
-  transition: color 0.25s, background-color 0.25s, transform 0.25s,
-    border-color 0.25s, outline-color 0.25s;
+  transition:
+    color 0.25s,
+    background-color 0.25s,
+    transform 0.25s,
+    border-color 0.25s,
+    outline-color 0.25s;
 
   &:disabled {
     cursor: not-allowed;
@@ -168,7 +171,7 @@
   outline-width: 2px;
   outline-color: transparent;
 
-  &:focus-visible {
+  &:focus-visible:not(:focus) {
     outline-color: var(--outline);
   }
 }
@@ -314,7 +317,7 @@ a {
   background-color: var(--button-bg-secondary);
   border-color: var(--button-border-secondary);
 
-  &[type="submit"] {
+  &[type='submit'] {
     border-color: var(--button-bg-primary);
     background-color: var(--button-border-primary);
     color: var(--text-inverted);
@@ -325,7 +328,7 @@ a {
     --color: var(--text-primary);
     border-color: var(--button-border-secondary-active);
 
-    &[type="submit"] {
+    &[type='submit'] {
       border-color: var(--button-bg-primary-active);
       background-color: var(--button-border-primary-active);
       color: var(--text-inverted);
@@ -337,18 +340,26 @@ a {
   }
 }
 
+:where(label:not(for)) {
+  display: block;
+
+  & input {
+    display: block;
+  }
+}
+
 :where(
     input:where(
-        [type="text"],
-        [type="email"],
-        [type="password"],
-        [type="search"],
-        [type="tel"],
-        [type="number"],
-        [type="date"],
-        [type="datetime-local"],
-        [type="month"],
-        [type="week"],
+        [type='text'],
+        [type='email'],
+        [type='password'],
+        [type='search'],
+        [type='tel'],
+        [type='number'],
+        [type='date'],
+        [type='datetime-local'],
+        [type='month'],
+        [type='week'],
 
       ),
     textarea,

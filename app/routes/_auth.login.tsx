@@ -1,40 +1,86 @@
-import { FormEvent, useEffect } from 'react'
+import { FormEvent, MouseEvent, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 
 import { supabase } from '../utils/supabaseClient'
 
 export const Login = () => {
-  const { mutate, isError, isPending, data } = useMutation({
-    mutationFn: (email: string) => {
-      return supabase.auth.signInWithOtp({ email })
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const {
+    mutate: mutateWithOtp,
+    isPending: isPendingWithOtp,
+    error: errorWithOtp
+  } = useMutation({
+    mutationFn: async (email: string) => {
+      const response = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          /** The redirect url embedded in the email link */
+          emailRedirectTo: 'http://localhost:5173/'
+        }
+      })
+      if (response.error) {
+        throw new Error(response.error.message)
+      }
+
+      console.info(`mutateWithOtp`, { response })
+      return response
     }
   })
 
-  useEffect(() => {
-    console.info({ isError, isPending, data })
-  }, [isError, isPending, data])
+  const {
+    mutate: mutateWithPassword,
+    error: errorWithPassword,
+    isPending: isPendingWithPassword
+  } = useMutation({
+    mutationFn: async ({ email, password }: { email: string; password: string }) => {
+      const response = await supabase.auth.signInWithPassword({
+        email,
+        password
+      })
 
-  const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+      console.info(`mutateWithPassword`, { response })
 
-    const form = event.currentTarget
-    const formData = new FormData(form)
-    const email = formData.get('email')
-    if (typeof email === 'string') {
-      await mutate(email)
+      if (response.error) {
+        throw new Error(response.error.message)
+      }
+      return response
     }
+  })
+
+  const handleLoginWithOtp = async (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    await mutateWithOtp(email)
+  }
+
+  const handleLoginWithPassword = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    await mutateWithPassword({ email, password })
   }
 
   return (
     <>
       <h1>Login</h1>
-      <form onSubmit={handleLogin}>
+      {errorWithPassword ? <p>{errorWithPassword.message}</p> : null}
+      {errorWithOtp ? <p>{errorWithOtp.message}</p> : null}
+      <form onSubmit={handleLoginWithPassword}>
         <label>
           Email
-          <input type="email" name="email" required />
+          <input type="email" name="email" required onChange={(event) => setEmail(event.target.value)} />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" required onChange={(event) => setPassword(event.target.value)} />
         </label>
 
-        <button type="submit">Login with magic link</button>
+        <button type="submit" disabled={isPendingWithPassword}>
+          Login with password
+        </button>
+        <br />
+        <button type="button" onClick={handleLoginWithOtp} disabled={isPendingWithOtp}>
+          Login with magic link
+        </button>
       </form>
     </>
   )
