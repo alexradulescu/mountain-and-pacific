@@ -1,9 +1,15 @@
 import './index.css'
 
+import { useEffect, useState } from 'react'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import { Session } from '@supabase/supabase-js'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
+import { create } from 'zustand'
+import { devtools, persist } from 'zustand/middleware'
+
+import { supabase } from './utils/supabaseClient'
 
 const queryClient = new QueryClient()
 
@@ -29,8 +35,49 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
+interface SessionState {
+  session: Session | null
+  setSession: (session: Session | null) => void
+}
+
+const useSessionStore = create<SessionState>()(
+  devtools(
+    persist(
+      (set) => ({
+        session: null,
+        setSession: (session) => set(() => ({ session }))
+      }),
+      {
+        name: 'session'
+      }
+    )
+  )
+)
+
 export default function App() {
-  return <Outlet />
+  const session = useSessionStore((state) => state.session)
+  const setSession = useSessionStore((state) => state.setSession)
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [setSession])
+
+  useEffect(() => {
+    console.log('session', session)
+  }, [session])
+
+  return (
+    <>
+      {session ? <h4>Logged in: {session.user.email}</h4> : <h4>Anon</h4>}
+      <Outlet />
+    </>
+  )
 }
 
 export function HydrateFallback() {
