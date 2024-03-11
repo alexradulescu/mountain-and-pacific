@@ -1,6 +1,6 @@
 import './index.css'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import { Session } from '@supabase/supabase-js'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -67,10 +67,6 @@ export default function App() {
       setSession(session)
     })
   }, [setSession])
-
-  useEffect(() => {
-    console.log('session', session)
-  }, [session])
 
   return (
     <>
