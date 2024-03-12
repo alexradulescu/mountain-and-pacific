@@ -2,13 +2,11 @@ import './index.css'
 
 import { useEffect } from 'react'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
-import { Session } from '@supabase/supabase-js'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
-import { create } from 'zustand'
-import { devtools, persist } from 'zustand/middleware'
 
+import { useSessionStore } from './functionality/useSessionStorage'
 import { supabase } from './utils/supabaseClient'
 
 const queryClient = new QueryClient()
@@ -35,28 +33,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-interface SessionState {
-  session: Session | null
-  setSession: (session: Session | null) => void
-}
-
-const useSessionStore = create<SessionState>()(
-  devtools(
-    persist(
-      (set) => ({
-        session: null,
-        setSession: (session) => set(() => ({ session }))
-      }),
-      {
-        name: 'session'
-      }
-    )
-  )
-)
-
 export default function App() {
   const session = useSessionStore((state) => state.session)
   const setSession = useSessionStore((state) => state.setSession)
+  console.info(session)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {

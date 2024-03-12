@@ -362,6 +362,7 @@ a {
         [type='datetime-local'],
         [type='month'],
         [type='week'],
+        [type='url'],
 
       ),
     textarea,

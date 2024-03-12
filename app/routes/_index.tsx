@@ -11,6 +11,11 @@ export default function Index() {
       <h1>Welcome to Remix (SPA Mode)</h1>
       <ul>
         <li>
+          <Link prefetch="intent" to="/account">
+            Account
+          </Link>
+        </li>
+        <li>
           <Link prefetch="intent" to="/login">
             Login
           </Link>
@@ -41,6 +46,7 @@ export default function Index() {
           </Link>
         </li>
       </ul>
+      <hr />
       <ul>
         <li>
           <a target="_blank" href="https://remix.run/future/spa-mode" rel="noreferrer">
