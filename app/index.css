@@ -319,6 +319,10 @@ a {
   background-color: var(--button-bg-secondary);
   border-color: var(--button-border-secondary);
 
+  &:not(:last-child) {
+    margin-block-end: 12px;
+  }
+
   &[type='submit'] {
     border-color: var(--button-bg-primary);
     background-color: var(--button-border-primary);
@@ -344,9 +348,11 @@ a {
 
 :where(label:not(for)) {
   display: block;
+  margin-block: 1rem;
 
   & input {
     display: block;
+    width: 100%;
   }
 }
 
@@ -366,7 +372,8 @@ a {
 
       ),
     textarea,
-    select
+    select,
+
   ) {
   --color: var(--text-secondary);
   --bg-color: var(--bg-backstage);
@@ -378,7 +385,6 @@ a {
   min-width: 120px;
   max-width: 100%;
   padding: 0 14px;
-  margin-bottom: 12px;
   border-radius: 4px;
   box-shadow: none;
   border-width: 1px;
@@ -386,6 +392,43 @@ a {
   color: var(--color);
   background-color: var(--bg-color);
   border-color: var(--grey-5);
+
+  &:not(:last-child) {
+    margin-block-end: 12px;
+  }
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+
+  &:where(:hover, :focus) {
+    border-color: var(--grey-3);
+  }
+}
+
+input[type='file']::file-selector-button,
+input[type='file']::-webkit-file-upload-button {
+  --color: var(--text-secondary);
+  --bg-color: var(--bg-backstage);
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 40px;
+  min-width: 120px;
+  max-width: 100%;
+  padding: 0 14px;
+  border-radius: 4px;
+  box-shadow: none;
+  border-width: 1px;
+  border-style: solid;
+  color: var(--color);
+  background-color: var(--bg-color);
+  border-color: var(--grey-5);
+
+  &:not(:last-child) {
+    margin-block-end: 12px;
+  }
 
   &::placeholder {
     color: var(--text-secondary);
@@ -435,4 +478,10 @@ a {
   & > :not(summary) {
     margin-top: 0;
   }
+}
+
+:where(hr) {
+  margin-block: 1em;
+  border-color: grey;
+  border-style: dashed;
 }
