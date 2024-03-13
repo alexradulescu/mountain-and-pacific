@@ -61,24 +61,12 @@ export const Avatar = ({ url, size, onUpload }: AvatarProps) => {
       {avatarUrl ? (
         <img src={avatarUrl} alt="Avatar" className="avatar image" style={{ height: size, width: size }} />
       ) : (
-        <div className="avatar no-image" style={{ height: size, width: size }} />
+        <p>No Avatar Image</p>
       )}
-      <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
-          {uploading ? 'Uploading ...' : 'Upload'}
-        </label>
-        <input
-          style={{
-            visibility: 'hidden',
-            position: 'absolute'
-          }}
-          type="file"
-          id="single"
-          accept="image/*"
-          onChange={uploadAvatar}
-          disabled={uploading}
-        />
-      </div>
+      <label>
+        <span>{uploading ? 'Uploading ...' : 'Upload'}</span>
+        <input type="file" id="single" accept="image/*" onChange={uploadAvatar} disabled={uploading} />
+      </label>
     </div>
   )
 }
