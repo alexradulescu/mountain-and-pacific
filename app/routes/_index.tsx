@@ -16,6 +16,11 @@ export default function Index() {
           </Link>
         </li>
         <li>
+          <Link prefetch="intent" to="/update-security">
+            Update Security
+          </Link>
+        </li>
+        <li>
           <Link prefetch="intent" to="/login">
             Login
           </Link>
