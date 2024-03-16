@@ -84,7 +84,7 @@ export const TaxCalculator: React.FC = () => {
   const results = calculateResults()
 
   return (
-    <form>
+    <>
       <h1>Tax Calculator</h1>
       <aside>
         <SalaryInput label="Monthly Salary 1" value={monthlySalary1} onChange={(value) => setMonthlySalary1(value)} />
@@ -149,6 +149,6 @@ export const TaxCalculator: React.FC = () => {
           </tbody>
         </table>
       </div>
-    </form>
+    </>
   )
 }

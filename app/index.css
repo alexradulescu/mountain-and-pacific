@@ -4,7 +4,74 @@
 * http://www.opensource.org/licenses/mit-license.php
 */
 
+/*
+1 - App background
+2 - Subtle background
+3 - UI element background
+4 - Hovered UI element background
+5 - Active / Selected UI element background
+6 - Subtle borders and separators
+7 - UI element border and focus rings
+8 - Hovered UI element border
+9 - Solid backgrounds
+10 - Hovered solid backgrounds
+11 - Low-contrast text
+12 - High-contrast text
+*/
+
 :root {
+  --slate-1: #111113; /* Bg */
+  --slate-2: #18191b; /* Bg subtle */
+  --slate-3: #212225; /* Interactive */
+  --slate-4: #272a2d; /* hovered interactive */
+  --slate-5: #2e3135; /* Subtle borders and separators */
+  --slate-6: #363a3f; /* UI element border and focus rings */
+  --slate-7: #43484e; /* Hovered UI element border  */
+  --slate-8: #5a6169; /* */
+  --slate-9: #696e77; /* */
+  --slate-10: #777b84; /* */
+  --slate-11: #b0b4ba; /* */
+  --slate-12: #edeef0; /* */
+
+  --sky-1: #0d141f; /* Bg */
+  --sky-2: #111a27; /* Bg subtle */
+  --sky-3: #112840; /* Interactive */
+  --sky-4: #113555; /* hovered interactive */
+  --sky-5: #154467; /* Subtle borders and separators */
+  --sky-6: #1b537b; /* UI element border and focus rings */
+  --sky-7: #1f6692; /* Hovered UI element border  */
+  --sky-8: #197cae; /* */
+  --sky-9: #7ce2fe; /* */
+  --sky-10: #a8eeff; /* */
+  --sky-11: #75c7f0; /* */
+  --sky-12: #c2f3ff; /* */
+
+  --tomato-1: #181111;
+  --tomato-2: #1f1513;
+  --tomato-3: #391714;
+  --tomato-4: #4e1511;
+  --tomato-5: #5e1c16;
+  --tomato-6: #6e2920;
+  --tomato-7: #853a2d;
+  --tomato-8: #ac4d39;
+  --tomato-9: #e54d2e;
+  --tomato-10: #ec6142;
+  --tomato-11: #ff977d;
+  --tomato-12: #fbd3cb;
+
+  --grass-1: #0e1511;
+  --grass-2: #141a15;
+  --grass-3: #1b2a1e;
+  --grass-4: #1d3a24;
+  --grass-5: #25482d;
+  --grass-6: #2d5736;
+  --grass-7: #366740;
+  --grass-8: #3e7949;
+  --grass-9: #46a758;
+  --grass-10: #53b365;
+  --grass-11: #71d083;
+  --grass-12: #c2f0c2;
+
   --grey-0: #fafafa;
   --grey-1: #f5f5f5;
   --grey-2: #e5e5e5;
