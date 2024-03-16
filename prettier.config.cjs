@@ -14,9 +14,10 @@ module.exports = {
     '^react$',
     '^next$',
     '^remix$',
+    '',
     '<THIRD_PARTY_MODULES>',
     '',
-    '^(@api|@assets|@ui|src|app)(/.*)$',
+    '^(@api|@assets|@ui|src|app|~/utils|~/functionality)(/.*)$',
     '',
     '^(?!.*[.]css$)[./].*$',
     '.css$'

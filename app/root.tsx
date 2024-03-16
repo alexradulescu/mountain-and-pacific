@@ -1,13 +1,12 @@
+import '@radix-ui/themes/styles.css'
 import './index.css'
 
-import { useEffect, useState } from 'react'
+import { Container, Theme } from '@radix-ui/themes'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
-
-import { useSessionStore } from './functionality/useSessionStorage'
-import { supabase } from './utils/supabaseClient'
+import { useSessionListener } from '~/functionality/useSession'
 
 const queryClient = new QueryClient()
 
@@ -22,7 +21,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <QueryClientProvider client={queryClient}>
-          <main>{children}</main>
+          <Theme appearance="dark">
+            <Container size="3" px="3">
+              {children}
+            </Container>
+          </Theme>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
         <ScrollRestoration />
@@ -34,30 +37,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const session = useSessionStore((state) => state.session)
-  const setSession = useSessionStore((state) => state.setSession)
-  console.info(session)
+  useSessionListener()
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [setSession])
-
-  useEffect(() => {
-    console.log('session', session)
-  }, [session])
-
-  return (
-    <>
-      {session ? <h4>Logged in: {session.user.email}</h4> : <h4>Anon</h4>}
-      <Outlet />
-    </>
-  )
+  return <Outlet />
 }
 
 export function HydrateFallback() {

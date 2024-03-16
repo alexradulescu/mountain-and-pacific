@@ -1,11 +1,10 @@
-import { Link, Outlet } from '@remix-run/react'
+import { Outlet } from '@remix-run/react'
+import { Header } from '~/functionality/shared/Header'
 
 export const AuthLayout = () => {
   return (
     <>
-      <Link to="/" prefetch="intent">
-        Back
-      </Link>
+      <Header />
       <Outlet />
     </>
   )

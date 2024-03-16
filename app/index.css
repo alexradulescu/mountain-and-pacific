@@ -488,3 +488,10 @@ details summary::marker {
   border-color: grey;
   border-style: dashed;
 }
+
+/* Custom from here for Radix */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}

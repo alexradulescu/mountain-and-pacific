@@ -1,11 +1,12 @@
 import { FormEvent, MouseEvent, useState } from 'react'
+import { useNavigate } from '@remix-run/react'
 import { useMutation } from '@tanstack/react-query'
-
-import { supabase } from '../utils/supabaseClient'
+import { supabase } from '~/utils/supabaseClient'
 
 export const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
   const {
     mutate: mutateWithOtp,
@@ -24,8 +25,11 @@ export const Login = () => {
         throw new Error(response.error.message)
       }
 
-      console.info(`mutateWithOtp`, { response })
       return response
+    },
+    onSuccess: (data) => {
+      console.info(`onSuccess`, { data })
+      navigate('/')
     }
   })
 
@@ -46,6 +50,10 @@ export const Login = () => {
         throw new Error(response.error.message)
       }
       return response
+    },
+    onSuccess: (data) => {
+      console.info(`onSuccess`, { data })
+      navigate('/')
     }
   })
 

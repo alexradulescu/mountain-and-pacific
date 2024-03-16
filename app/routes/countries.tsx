@@ -1,7 +1,6 @@
 import { Link } from '@remix-run/react'
 import { useQuery } from '@tanstack/react-query'
-
-import { supabase } from '../utils/supabaseClient'
+import { supabase } from '~/utils/supabaseClient'
 
 interface Country {
   name: string

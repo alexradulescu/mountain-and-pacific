@@ -1,9 +1,9 @@
 import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react'
 import { Navigate } from '@remix-run/react'
+import { supabase } from '~/utils/supabaseClient'
 
-import { supabase } from '../utils/supabaseClient'
 import { Avatar } from './Avatar'
-import { useSessionStore } from './useSessionStorage'
+import { useSessionStore } from './useSession'
 
 export const Account: FC = () => {
   const session = useSessionStore((state) => state.session)

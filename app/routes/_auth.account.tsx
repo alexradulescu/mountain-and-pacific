@@ -1,4 +1,4 @@
-import { Account } from '../functionality/Account'
+import { Account } from '~/functionality/Account'
 
 export const AccountPage = () => {
   return <Account />

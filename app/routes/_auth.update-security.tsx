@@ -1,8 +1,7 @@
 import { FormEvent, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-
-import { useSessionStore } from '../functionality/useSessionStorage'
-import { supabase } from '../utils/supabaseClient'
+import { useSessionStore } from '~/functionality/useSession'
+import { supabase } from '~/utils/supabaseClient'
 
 export const UpdateSecurity = () => {
   const session = useSessionStore((state) => state.session)
