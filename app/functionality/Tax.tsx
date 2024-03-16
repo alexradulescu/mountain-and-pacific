@@ -53,8 +53,6 @@ const SalaryInput: React.FC<SalaryInputProps> = ({ label, value, onChange }) => 
 export const TaxCalculator: React.FC = () => {
   const [monthlySalary1, setMonthlySalary1] = useState<number | undefined>(undefined)
   const [monthlySalary2, setMonthlySalary2] = useState<number | undefined>(undefined)
-  const [annualSalary1, setAnnualSalary1] = useState<number | undefined>(undefined)
-  const [annualSalary2, setAnnualSalary2] = useState<number | undefined>(undefined)
   const [bonus1, setBonus1] = useState<number | undefined>(undefined)
   const [bonus2, setBonus2] = useState<number | undefined>(undefined)
 
@@ -63,8 +61,8 @@ export const TaxCalculator: React.FC = () => {
   }
 
   const calculateResults = () => {
-    const salary1 = annualSalary1 ?? monthlySalary1! * 12 + (bonus1 ?? 0)
-    const salary2 = annualSalary2 ?? monthlySalary2! * 12 + (bonus2 ?? 0)
+    const salary1 = monthlySalary1 ? monthlySalary1 * 12 + (bonus1 ?? 0) : 0
+    const salary2 = monthlySalary2 ? monthlySalary2 * 12 + (bonus2 ?? 0) : 0
 
     const tax1 = calculateTax(salary1)
     const tax2 = calculateTax(salary2)
@@ -76,8 +74,8 @@ export const TaxCalculator: React.FC = () => {
       tax2,
       monthlySave1: tax1 / 12,
       monthlySave2: tax2 / 12,
-      net1: monthlySalary1 ? monthlySalary1 - tax1 / 12 : annualSalary1! / 12 - tax1,
-      net2: monthlySalary2 ? monthlySalary2 - tax2 / 12 : annualSalary2! / 12 - tax2,
+      net1: monthlySalary1 ? monthlySalary1 - tax1 / 12 : 0,
+      net2: monthlySalary2 ? monthlySalary2 - tax2 / 12 : 0,
       effectiveRate1: calcEffectiveRate(salary1, tax1),
       effectiveRate2: calcEffectiveRate(salary2, tax2)
     }
@@ -89,47 +87,68 @@ export const TaxCalculator: React.FC = () => {
     <form>
       <h1>Tax Calculator</h1>
       <aside>
-        <div>
-          <h2>Person 1</h2>
-          <SalaryInput label="Monthly Salary" value={monthlySalary1} onChange={(value) => setMonthlySalary1(value)} />
-          {/* <SalaryInput label="Annual Salary" value={annualSalary1} onChange={(value) => setAnnualSalary1(value)} /> */}
-          <SalaryInput label="Bonus" value={bonus1} onChange={(value) => setBonus1(value)} />
-          <hr />
-          <h2>Person 2</h2>
-          <SalaryInput label="Monthly Salary" value={monthlySalary2} onChange={(value) => setMonthlySalary2(value)} />
-          {/* <SalaryInput label="Annual Salary" value={annualSalary2} onChange={(value) => setAnnualSalary2(value)} /> */}
-          <SalaryInput label="Bonus" value={bonus2} onChange={(value) => setBonus2(value)} />
-        </div>
-        <div>
-          <h2>Results</h2>
-          {monthlySalary1 ? (
-            <>
-              <p>P1 Monthly Tax: ${results.monthlySave1.toFixed(2)}</p>
-              <p>P1 Salary Left: ${results.net1.toFixed(2)}</p>
-              <p>P1 Effective Tax Rate: {results.effectiveRate1}</p>
-              <p>P1 Annual Tax: ${results.tax1.toFixed(2)}</p>
-              <hr />
-            </>
-          ) : null}
-          {monthlySalary2 ? (
-            <>
-              <p>P 2 Monthly Tax: ${results.monthlySave2.toFixed(2)}</p>
-              <p>P 2 Salary Left: ${results.net2.toFixed(2)}</p>
-              <p>P 2 Effective Tax Rate: {results.effectiveRate2}</p>
-              <p>P 2 Annual Tax: ${results.tax2.toFixed(2)}</p>
-              <hr />
-            </>
-          ) : null}
-          {monthlySalary1 || monthlySalary2 ? (
-            <>
-              <h3>Totals for Both Persons</h3>
-              <p>Total Annual Tax: ${(results.tax1 + results.tax2).toFixed(2)}</p>
-              <p>Total Monthly Tax: ${(results.monthlySave1 + results.monthlySave2).toFixed(2)}</p>
-              <p>Total Salary Left: ${(results.net1 + results.net2).toFixed(2)}</p>
-            </>
-          ) : null}
-        </div>
+        <SalaryInput label="Monthly Salary 1" value={monthlySalary1} onChange={(value) => setMonthlySalary1(value)} />
+        <SalaryInput label="Bonus 1" value={bonus1} onChange={(value) => setBonus1(value)} />
       </aside>
+      <aside>
+        <SalaryInput label="Monthly Salary 2" value={monthlySalary2} onChange={(value) => setMonthlySalary2(value)} />
+        <SalaryInput label="Bonus 2" value={bonus2} onChange={(value) => setBonus2(value)} />
+      </aside>
+      <hr />
+      <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+        <table style={{ width: '100%' }}>
+          <thead>
+            <tr>
+              <th>Person</th>
+              <th style={{ textAlign: 'right' }}>Mth tax</th>
+              <th style={{ textAlign: 'right' }}>Mth left</th>
+              <th style={{ textAlign: 'right' }}>Yrl tax</th>
+            </tr>
+          </thead>
+          <tbody>
+            {monthlySalary1 ? (
+              <tr>
+                <th>
+                  P1 <small>{results.effectiveRate1}</small>
+                </th>
+                <td style={{ textAlign: 'right' }}>${Number(results.monthlySave1.toFixed()).toLocaleString()}</td>
+                <td style={{ textAlign: 'right' }}>
+                  <strong>${Number(results.net1.toFixed()).toLocaleString()}</strong>
+                </td>
+                <td style={{ textAlign: 'right' }}>${Number(results.tax1.toFixed()).toLocaleString()}</td>
+              </tr>
+            ) : null}
+
+            {monthlySalary2 ? (
+              <tr>
+                <th>
+                  P2 <small>{results.effectiveRate2}</small>
+                </th>
+                <td style={{ textAlign: 'right' }}>${Number(results.monthlySave2.toFixed()).toLocaleString()}</td>
+                <td style={{ textAlign: 'right' }}>
+                  <strong>${Number(results.net2.toFixed()).toLocaleString()}</strong>
+                </td>
+                <td style={{ textAlign: 'right' }}>${Number(results.tax2.toFixed()).toLocaleString()}</td>
+              </tr>
+            ) : null}
+
+            {monthlySalary1 || monthlySalary2 ? (
+              <tr>
+                <th>Family</th>
+                <td style={{ textAlign: 'right' }}>
+                  ${Number((results.monthlySave1 + results.monthlySave2).toFixed()).toLocaleString()}
+                </td>
+                <td style={{ textAlign: 'right' }}>
+                  <strong>${Number((results.net1 + results.net2).toFixed()).toLocaleString()}</strong>
+                </td>
+                <td style={{ textAlign: 'right' }}>
+                  ${Number((results.tax1 + results.tax2).toFixed()).toLocaleString()}
+                </td>
+              </tr>
+            ) : null}
+          </tbody>
+        </table>
+      </div>
     </form>
   )
 }
