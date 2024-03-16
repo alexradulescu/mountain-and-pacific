@@ -1,6 +1,6 @@
 import './index.css'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -47,6 +47,10 @@ export default function App() {
       setSession(session)
     })
   }, [setSession])
+
+  useEffect(() => {
+    console.log('session', session)
+  }, [session])
 
   return (
     <>

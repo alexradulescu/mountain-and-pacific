@@ -1,5 +1,3 @@
-@layer reset, base, tokens, recipes, utilities;
-
 /*
 * Soul css V0.1
 * Free to use under the MIT license.
@@ -478,6 +476,11 @@ input[type='file']::-webkit-file-upload-button {
   & > :not(summary) {
     margin-top: 0;
   }
+}
+details summary::-webkit-details-marker,
+details summary::marker {
+  display: none;
+  content: '';
 }
 
 :where(hr) {
