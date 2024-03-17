@@ -465,7 +465,8 @@ a {
           [type='datetime-local'],
           [type='month'],
           [type='week'],
-          [type='url']
+          [type='url'],
+          [type='file']
         ),
       textarea,
       select
@@ -537,34 +538,32 @@ a {
 
 input[type='file']::file-selector-button,
 input[type='file']::-webkit-file-upload-button {
-  --color: var(--text-secondary);
-  --bg-color: var(--bg-backstage);
+  --color: var(--slate-12);
+  --bg: var(--slate-3);
 
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  padding: 0px 16px;
   height: 40px;
-  min-width: 120px;
-  max-width: 100%;
-  padding: 0 14px;
+
   border-radius: 4px;
-  box-shadow: none;
   border-width: 1px;
   border-style: solid;
+
   color: var(--color);
-  background-color: var(--bg-color);
-  border-color: var(--grey-5);
+  background-color: var(--bg);
+  border-color: var(--bg);
 
   &:not(:last-child) {
     margin-block-end: 12px;
   }
 
-  &::placeholder {
-    color: var(--text-secondary);
+  &:where(:hover, :focus) {
+    --color: var(--text-primary);
+    --bg: var(--slate-4);
   }
 
-  &:where(:hover, :focus) {
-    border-color: var(--grey-3);
+  &:active {
+    --bg: var(--slate-5);
+    transform: scale(0.95);
   }
 }
 
