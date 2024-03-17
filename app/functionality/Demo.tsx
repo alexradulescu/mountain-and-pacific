@@ -37,6 +37,8 @@ export const Demo = () => {
               <button>Button rocks</button>
               <br />
               <button type="submit">Submit rocks</button>
+              <br />
+              <button type="reset">Reset</button>
             </td>
           </tr>{' '}
           <tr>
@@ -78,19 +80,21 @@ export const Demo = () => {
           <tr>
             <th>Input</th>
             <td>
-              <input type="number" placeholder="123" />
-              <br />
-              <input type="number" placeholder="123" pattern="[0-9+-]*" inputMode="numeric" />
-              <br />
-              <input type="date" placeholder="Date" />
-              <br />
-              <input type="tel" placeholder="tel?" />
-              <br />
-              <input type="month" placeholder="month?" />
-              <br />
-              <input type="week" placeholder="week?" />
-              <br />
-              <input type="datetime-local" placeholder="datetime-local?" />
+              <fieldset>
+                <input type="number" placeholder="123" />
+                <br />
+                <input type="number" placeholder="123" pattern="[0-9+-]*" inputMode="numeric" />
+                <br />
+                <input type="date" placeholder="Date" />
+                <br />
+                <input type="tel" placeholder="tel?" />
+                <br />
+                <input type="month" placeholder="month?" />
+                <br />
+                <input type="week" placeholder="week?" />
+                <br />
+                <input type="datetime-local" placeholder="datetime-local?" />
+              </fieldset>
             </td>
           </tr>
           <tr>
@@ -248,6 +252,18 @@ export const Demo = () => {
             <dt>19,300,000.0000</dt>
           </dl>
         </aside>
+        <fieldset>
+          <legend>Legend</legend>
+          <label>
+            Email
+            <input type="email" required placeholder="ex: john.doe@email.com" />
+          </label>
+          <button type="submit">Login with Magic Link</button>
+          <label>
+            <input type="checkbox" />
+            Remember Me
+          </label>
+        </fieldset>
       </article>
     </>
   )
