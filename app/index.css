@@ -72,124 +72,11 @@
   --grass-11: #71d083;
   --grass-12: #c2f0c2;
 
-  --grey-0: #fafafa;
-  --grey-1: #f5f5f5;
-  --grey-2: #e5e5e5;
-  --grey-3: #d4d4d4;
-  --grey-4: #a3a3a3;
-  --grey-5: #737373;
-  --grey-6: #525252;
-  --grey-7: #404040;
-  --grey-8: #262626;
-  --grey-9: #171717;
-  --grey-10: #0a0a0a;
-
-  --blue-0: #eff6ff;
-  --blue-1: #dbeafe;
-  --blue-2: #bfdbfe;
-  --blue-3: #93c5fd;
-  --blue-4: #60a5fa;
-  --blue-5: #3b82f6;
-  --blue-6: #2563eb;
-  --blue-7: #1d4ed8;
-  --blue-8: #1e40af;
-  --blue-9: #1e3a8a;
-  --blue-10: #172554;
-
-  --bleo-0: #ddf4ff;
-  --bleo-1: #b6e3ff;
-  --bleo-2: #80ccff;
-  --bleo-3: #54aeff;
-  --bleo-4: #218bff;
-  --bleo-5: #0969da;
-  --bleo-6: #0550ae;
-  --bleo-7: #033d8b;
-  --bleo-8: #0a3069;
-  --bleo-9: #002155;
-  --bleo-10: #001740;
-  --bleo-11: #000d2b;
-  --bleo-12: #000000;
-
-  --mantis-50: #f6faf3;
-  --mantis-100: #e9f5e3;
-  --mantis-200: #d3eac8;
-  --mantis-300: #afd89d;
-  --mantis-400: #82bd69;
-  --mantis-500: #61a146;
-  --mantis-600: #4c8435;
-  --mantis-700: #3d692c;
-  --mantis-800: #345427;
-  --mantis-900: #2b4522;
-  --mantis-950: #13250e;
-
-  --cerise-red-50: #fef2f4;
-  --cerise-red-100: #fde6e9;
-  --cerise-red-200: #fbd0d9;
-  --cerise-red-300: #f7aab9;
-  --cerise-red-400: #f27a93;
-  --cerise-red-500: #e63f66;
-  --cerise-red-600: #d42a5b;
-  --cerise-red-700: #b21e4b;
-  --cerise-red-800: #951c45;
-  --cerise-red-900: #801b40;
-  --cerise-red-950: #470a1f;
-
   --font-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
   --font-sans: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-
-  --text-primary: black;
-  --text-inverted: white;
-  --text-secondary: var(--grey-9);
-  --link: var(--bleo-5);
-  --link-active: var(--bleo-7);
-
-  --outline: var(--bleo-4);
-
-  --bg-backstage: var(--grey-0);
-  --bg-midstage: var(--grey-1);
-  --bg-topstage: var(--grey-2);
-  --bg-frontstage: var(--grey-3);
-
-  --border-neutral: var(--grey-2);
-  --border-active: var(--grey-4);
-
-  --button-bg-primary: var(--grey-8);
-  --button-bg-primary-active: var(--grey-10);
-  --button-border-primary: var(--grey-8);
-  --button-border-primary-active: var(--grey-10);
-
-  --button-bg-secondary: var(--grey-2);
-  --button-border-secondary: var(--grey-2);
-  --button-border-secondary-active: var(--grey-4);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --text-primary: white;
-    --text-inverted: black;
-    --text-secondary: var(--grey-1);
-    --link: var(--bleo-3);
-    --link-active: var(--bleo-1);
-
-    --outline: var(--bleo-4);
-
-    --bg-backstage: var(--grey-9);
-    --bg-midstage: var(--grey-8);
-    --bg-topstage: var(--grey-7);
-    --bg-frontstage: var(--grey-6);
-
-    --border-neutral: var(--grey-7);
-    --border-active: var(--grey-6);
-
-    --button-bg-primary: var(--grey-2);
-    --button-bg-primary-active: var(--grey-0);
-    --button-border-primary: var(--grey-2);
-    --button-border-primary-active: var(--grey-0);
-
-    --button-bg-secondary: var(--grey-8);
-    --button-border-secondary: var(--grey-8);
-    --button-border-secondary-active: var(--grey-6);
-  }
 }
 
 *,
@@ -415,7 +302,6 @@ a {
 
   /* @media (hover: hover) and (pointer: fine) { */
   &:where(:hover, :focus) {
-    --color: var(--text-primary);
     --bg: var(--slate-4);
 
     &[type='submit'] {
@@ -557,7 +443,6 @@ input[type='file']::-webkit-file-upload-button {
   }
 
   &:where(:hover, :focus) {
-    --color: var(--text-primary);
     --bg: var(--slate-4);
   }
 
