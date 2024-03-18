@@ -1,8 +1,11 @@
 import { useMemo } from 'react'
-import { Avatar, Button, DropdownMenu, Flex } from '@radix-ui/themes'
+
+import { css } from '@acab/ecsstatic'
 import { Link } from '@remix-run/react'
+
 import { supabase } from '~/utils/supabaseClient'
 
+import { Stack } from '../../../styled-system/jsx'
 import { useSessionStore } from '../useSession'
 
 export const Header = () => {
@@ -16,35 +19,40 @@ export const Header = () => {
   }, [session])
 
   return (
-    <Flex justify="between" align="center" height={'48px'}>
-      <Button asChild variant="ghost">
-        <Link to="/" prefetch="intent">
-          Back
-        </Link>
-      </Button>
+    // <div className={HeaderWrapper}>
+    <Stack alignItems="center" justify="space-between" gap="1" direction="row">
+      <Link to="/" prefetch="intent">
+        Back
+      </Link>
       {initials ? (
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger>
-            <Button radius="full" variant="ghost">
-              <Avatar fallback={initials} radius="full" />
-            </Button>
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item asChild>
-              <Link to="/account" prefetch="intent">
-                Account
-              </Link>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item onClick={() => supabase.auth.signOut()}>Log Out</DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Root>
-      ) : (
-        <Button asChild variant="outline">
-          <Link to="/login" prefetch="intent">
-            Login
+        <div className={HStack}>
+          <span>{initials}</span>
+
+          <Link to="/account" prefetch="intent">
+            Account
           </Link>
-        </Button>
+
+          <button onClick={() => supabase.auth.signOut()}>Log Out</button>
+        </div>
+      ) : (
+        <Link to="/login" prefetch="intent">
+          Login
+        </Link>
       )}
-    </Flex>
+    </Stack>
+    // </div>
   )
 }
+
+const HeaderWrapper = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+`
+
+const HStack = css`
+  display: flex;
+  gap: 4px;
+  align-items: center;
+`

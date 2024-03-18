@@ -1,11 +1,10 @@
-import '@radix-ui/themes/styles.css'
 import './index.css'
 
-import { Container, Theme } from '@radix-ui/themes'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
+
 import { useSessionListener } from '~/functionality/useSession'
 
 const queryClient = new QueryClient()
@@ -21,11 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <QueryClientProvider client={queryClient}>
-          <Theme appearance="dark">
-            <Container size="3" px="3">
-              {children}
-            </Container>
-          </Theme>
+          <main>{children}</main>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
         <ScrollRestoration />
