@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
+
 import { Session } from '@supabase/supabase-js'
 import { useQuery } from '@tanstack/react-query'
-import { supabase } from '~/utils/supabaseClient'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
+
+import { supabase } from '~/utils/supabaseClient'
 
 export interface SessionState {
   session: Session | null

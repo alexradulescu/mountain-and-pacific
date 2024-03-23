@@ -17,7 +17,7 @@ module.exports = {
     '',
     '<THIRD_PARTY_MODULES>',
     '',
-    '^(@api|@assets|@ui|src|app|~/utils|~/functionality)(/.*)$',
+    '^(@api|@assets|@ui|src|app|~/utils|~/ui|~/functionality)(/.*)$',
     '',
     '^(?!.*[.]css$)[./].*$',
     '.css$'

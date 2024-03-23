@@ -1,4 +1,5 @@
 import { Outlet } from '@remix-run/react'
+
 import { Header } from '~/functionality/shared/Header'
 
 export const AuthLayout = () => {

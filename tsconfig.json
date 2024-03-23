@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"],
-      "~/styled": ["./styled-system/*"]
+      "styled-system": ["./styled-system/*"]
     },
 
     // Remix takes care of building everything in `remix build`.

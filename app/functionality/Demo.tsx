@@ -1,6 +1,6 @@
 export const Demo = () => {
   return (
-    <>
+    <div className="soul">
       <table>
         <thead>
           <tr>
@@ -265,6 +265,6 @@ export const Demo = () => {
           </label>
         </fieldset>
       </article>
-    </>
+    </div>
   )
 }

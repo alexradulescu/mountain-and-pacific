@@ -8,7 +8,8 @@ export default defineConfig({
     remix({
       ssr: false
     }),
-    tsconfigPaths(),
+    // tsconfigPaths(),
+    tsconfigPaths({ root: './' }),
     ecsstatic({ classNamePrefix: '🚀' })
   ]
 })

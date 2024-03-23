@@ -1,5 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react'
+
 import { Navigate } from '@remix-run/react'
+
 import { supabase } from '~/utils/supabaseClient'
 
 import { Avatar } from './Avatar'
@@ -75,10 +77,9 @@ export const Account: FC = () => {
   }
 
   return (
-    <form onSubmit={updateProfile} className="form-widget">
+    <form onSubmit={updateProfile}>
       <Avatar
         url={avatarUrl}
-        size={150}
         onUpload={(event, url) => {
           updateProfile(event, url)
         }}
@@ -102,17 +103,13 @@ export const Account: FC = () => {
         <input id="website" type="url" value={website || ''} onChange={(e) => setWebsite(e.target.value)} />
       </label>
 
-      <div>
-        <button className="button block primary" type="submit" disabled={loading}>
-          {loading ? 'Loading ...' : 'Update'}
-        </button>
-      </div>
+      <button type="submit" disabled={loading}>
+        {loading ? 'Loading ...' : 'Update'}
+      </button>
 
-      <div>
-        <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
-          Sign Out
-        </button>
-      </div>
+      <button type="button" onClick={() => supabase.auth.signOut()}>
+        Sign Out
+      </button>
     </form>
   )
 }

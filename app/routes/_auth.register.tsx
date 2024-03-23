@@ -1,5 +1,7 @@
 import { FormEvent, useState } from 'react'
+
 import { useMutation } from '@tanstack/react-query'
+
 import { supabase } from '~/utils/supabaseClient'
 
 export const Register = () => {

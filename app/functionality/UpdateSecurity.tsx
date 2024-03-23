@@ -1,9 +1,12 @@
 import { FormEvent, useState } from 'react'
+
 import { useMutation } from '@tanstack/react-query'
+import { toast } from 'sonner'
+
 import { useSessionStore } from '~/functionality/useSession'
 import { supabase } from '~/utils/supabaseClient'
 
-export const UpdateSecurity = () => {
+export const Security = () => {
   const session = useSessionStore((state) => state.session)
 
   const [password, setPassword] = useState<string>('')
@@ -20,6 +23,12 @@ export const UpdateSecurity = () => {
         }
         return response
       }
+    },
+    onSuccess: () => {
+      toast.success('Your password has been successfully updated')
+    },
+    onError: (error) => {
+      toast.error('There was an error & Your password has NOT been changed: ' + error.message)
     }
   })
 
@@ -30,7 +39,7 @@ export const UpdateSecurity = () => {
 
   return (
     <>
-      <h1>UpdateSecurity</h1>
+      <h2>Update your password</h2>
       <form onSubmit={handleUpdatePassword}>
         <label>
           <span>Password</span>
@@ -49,5 +58,3 @@ export const UpdateSecurity = () => {
     </>
   )
 }
-
-export default UpdateSecurity

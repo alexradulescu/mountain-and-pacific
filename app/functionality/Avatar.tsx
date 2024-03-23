@@ -1,13 +1,16 @@
 import { ChangeEvent, useEffect, useState } from 'react'
+
+import { Avatar as AvatarUi } from '~/ui/avatar'
+import { HStack } from 'styled-system/jsx'
+
 import { supabase } from '~/utils/supabaseClient'
 
 interface AvatarProps {
   url: string | null
-  size: number
   onUpload: (event: ChangeEvent<HTMLInputElement>, filePath: string) => void
 }
 
-export const Avatar = ({ url, size, onUpload }: AvatarProps) => {
+export const Avatar = ({ url, onUpload }: AvatarProps) => {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
   const [uploading, setUploading] = useState(false)
 
@@ -56,16 +59,9 @@ export const Avatar = ({ url, size, onUpload }: AvatarProps) => {
   }
 
   return (
-    <div>
-      {avatarUrl ? (
-        <img src={avatarUrl} alt="Avatar" className="avatar image" style={{ height: size, width: size }} />
-      ) : (
-        <p>No Avatar Image</p>
-      )}
-      <label>
-        <span>{uploading ? 'Uploading ...' : 'Upload'}</span>
-        <input type="file" id="single" accept="image/*" onChange={uploadAvatar} disabled={uploading} />
-      </label>
-    </div>
+    <HStack gap="2" marginBlock={3}>
+      {avatarUrl ? <AvatarUi src={avatarUrl} name="Avatar" /> : <p>No Avatar Image</p>}
+      <input type="file" id="single" accept="image/*" onChange={uploadAvatar} disabled={uploading} />
+    </HStack>
   )
 }
