@@ -1,15 +1,13 @@
-import { ecsstatic } from '@acab/ecsstatic/vite'
-import { vitePlugin as remix } from '@remix-run/dev'
-import { defineConfig } from 'vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
+
+import { vitePlugin as remix } from "@remix-run/dev";
 
 export default defineConfig({
   plugins: [
     remix({
-      ssr: false
+      ssr: false,
     }),
-    // tsconfigPaths(),
-    tsconfigPaths({ root: './' }),
-    ecsstatic({ classNamePrefix: '🚀' })
-  ]
-})
+    tsconfigPaths({ root: "./" }),
+  ],
+});

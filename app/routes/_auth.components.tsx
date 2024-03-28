@@ -1,4 +1,4 @@
-import { Demo } from '~/functionality/Demo'
+import { Demo } from '~/func/Demo'
 
 export const Components = () => <Demo />
 

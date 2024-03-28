@@ -4,9 +4,8 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/reac
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
+import { useSessionListener } from '~/func/useSession'
 import { Toaster } from 'sonner'
-
-import { useSessionListener } from '~/functionality/useSession'
 
 const queryClient = new QueryClient()
 

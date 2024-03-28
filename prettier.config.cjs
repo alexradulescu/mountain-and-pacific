@@ -13,11 +13,11 @@ module.exports = {
   importOrder: [
     '^react$',
     '^next$',
-    '^remix$',
+    '^@remix-run$',
     '',
     '<THIRD_PARTY_MODULES>',
     '',
-    '^(@api|@assets|@ui|src|app|~/utils|~/ui|~/functionality)(/.*)$',
+    '^(@api|@assets|@ui|src|app|~/utils|~/ui|~/func)(/.*)$',
     '',
     '^(?!.*[.]css$)[./].*$',
     '.css$'

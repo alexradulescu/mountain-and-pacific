@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react'
 
 import { useMutation } from '@tanstack/react-query'
+import { useSessionStore } from '~/func/useSession'
 import { toast } from 'sonner'
 
-import { useSessionStore } from '~/functionality/useSession'
 import { supabase } from '~/utils/supabaseClient'
 
 export const Security = () => {

@@ -1,10 +1,9 @@
 import type { MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
+import { useSessionStore } from '~/func/useSession'
 import { Button } from '~/ui/button'
 import { Heading } from '~/ui/heading'
 import { Container, Divider, HStack } from 'styled-system/jsx'
-
-import { useSessionStore } from '~/functionality/useSession'
 
 export const meta: MetaFunction = () => {
   return [{ title: 'New Remix SPA' }, { name: 'description', content: 'Welcome to Remix (SPA Mode)!' }]

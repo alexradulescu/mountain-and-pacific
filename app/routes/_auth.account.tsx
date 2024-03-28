@@ -1,7 +1,6 @@
+import { Account } from '~/func/Account'
+import { Security } from '~/func/UpdateSecurity'
 import { Divider } from 'styled-system/jsx'
-
-import { Account } from '~/functionality/Account'
-import { Security } from '~/functionality/UpdateSecurity'
 
 export const AccountPage = () => {
   return (

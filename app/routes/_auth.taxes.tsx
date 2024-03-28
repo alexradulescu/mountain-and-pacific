@@ -1,4 +1,4 @@
-import { TaxCalculator } from '~/functionality/Tax'
+import { TaxCalculator } from '~/func/Tax'
 
 export const Taxes = () => <TaxCalculator />
 

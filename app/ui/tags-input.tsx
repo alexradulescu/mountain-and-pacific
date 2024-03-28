@@ -1,9 +1,8 @@
-import type { ComponentProps } from 'react'
-
 import { TagsInput } from '@ark-ui/react/tags-input'
-import { createStyleContext } from '~/lib/create-style-context'
+import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'
 import { tagsInput } from 'styled-system/recipes'
+import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(tagsInput)
 
@@ -12,7 +11,10 @@ export const ClearTrigger = withContext(styled(TagsInput.ClearTrigger), 'clearTr
 export const Control = withContext(styled(TagsInput.Control), 'control')
 export const Input = withContext(styled(TagsInput.Input), 'input')
 export const Item = withContext(styled(TagsInput.Item), 'item')
-export const ItemDeleteTrigger = withContext(styled(TagsInput.ItemDeleteTrigger), 'itemDeleteTrigger')
+export const ItemDeleteTrigger = withContext(
+  styled(TagsInput.ItemDeleteTrigger),
+  'itemDeleteTrigger',
+)
 export const ItemInput = withContext(styled(TagsInput.ItemInput), 'itemInput')
 export const ItemPreview = withContext(styled(TagsInput.ItemPreview), 'itemPreview')
 export const ItemText = withContext(styled(TagsInput.ItemText), 'itemText')
