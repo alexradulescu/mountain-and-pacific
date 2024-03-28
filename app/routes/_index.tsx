@@ -64,21 +64,6 @@ export default function Index() {
             Taxes
           </Link>
         </Button>
-        <Button variant="subtle" asChild>
-          <Link prefetch="intent" to="/countries">
-            Countries
-          </Link>
-        </Button>
-        <Button variant="subtle" asChild>
-          <Link prefetch="intent" to="/components">
-            Components
-          </Link>
-        </Button>
-        <Button variant="subtle" asChild>
-          <Link prefetch="intent" to="/taxes">
-            Taxes
-          </Link>
-        </Button>
       </HStack>
 
       <Divider />

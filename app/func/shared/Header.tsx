@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 
 import { Link } from '@remix-run/react'
+import { Avatar } from '~/ui/avatar'
 import { Button } from '~/ui/button'
 import * as Menu from '~/ui/menu'
 import { LogOutIcon, SettingsIcon, UserIcon } from 'lucide-react'
@@ -32,8 +33,8 @@ export const Header = () => {
         {initials ? (
           <Menu.Root>
             <Menu.Trigger asChild>
-              <Button borderRadius={'full'} variant={'subtle'}>
-                {initials}
+              <Button borderRadius={'full'} variant={'link'}>
+                <Avatar name={initials} />
               </Button>
             </Menu.Trigger>
             <Menu.Positioner>

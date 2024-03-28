@@ -1,6 +1,10 @@
 import { FormEvent, useState } from 'react'
 
 import { useMutation } from '@tanstack/react-query'
+import { InputWithLabel } from '~/func/shared/InputWithLabel'
+import { Button } from '~/ui/button'
+import { Heading } from '~/ui/heading'
+import { Stack } from 'styled-system/jsx'
 
 import { supabase } from '~/utils/supabaseClient'
 
@@ -39,21 +43,29 @@ export const Register = () => {
 
   return (
     <>
-      <h1>Register</h1>
+      <Heading size={'3xl'}>Register</Heading>
       {errorWithPassword ? <p>{errorWithPassword.message}</p> : null}
       <form onSubmit={handleRegisterWithPassword}>
-        <label>
-          Email
-          <input type="email" name="email" required onChange={(event) => setEmail(event.target.value)} />
-        </label>
-        <label>
-          Password
-          <input type="password" name="password" required onChange={(event) => setPassword(event.target.value)} />
-        </label>
+        <Stack gap="4" marginBlock="4">
+          <InputWithLabel
+            label="Email"
+            name="email"
+            type="email"
+            required
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <InputWithLabel
+            label="Password"
+            name="password"
+            type="password"
+            required
+            onChange={(event) => setPassword(event.target.value)}
+          />
 
-        <button type="submit" disabled={isPendingWithPassword}>
-          Register with password
-        </button>
+          <Button type="submit" disabled={isPendingWithPassword}>
+            Register with password
+          </Button>
+        </Stack>
       </form>
     </>
   )
