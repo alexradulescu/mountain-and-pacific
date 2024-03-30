@@ -9,6 +9,8 @@ export default defineConfig({
     remix({
       ssr: false
     }),
-    ecsstatic()
+    ecsstatic({
+      classNamePrefix: '🖖'
+    })
   ]
 })
