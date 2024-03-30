@@ -1,11 +1,13 @@
 import { css } from '@acab/ecsstatic'
-import { AppShell, Burger, Group, UnstyledButton } from '@mantine/core'
+import { AppShell, Burger, Group, UnstyledButton, useMantineColorScheme } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { Link } from '@remix-run/react'
-import { Brain, Closet } from 'iconoir-react'
+import { CardsGrid } from '~/func/CardsGrid'
+import { Brain, Closet, HalfMoon, SunLight } from 'iconoir-react'
 
 export const Shell = () => {
   const [opened, { toggle }] = useDisclosure()
+  const { toggleColorScheme, colorScheme } = useMantineColorScheme()
 
   return (
     <AppShell
@@ -22,7 +24,9 @@ export const Shell = () => {
               <UnstyledButton className={ShellStyle}>Home</UnstyledButton>
               <UnstyledButton className={ShellStyle}>Blog</UnstyledButton>
               <UnstyledButton className={ShellStyle}>Contacts</UnstyledButton>
-              <UnstyledButton className={ShellStyle}>Support</UnstyledButton>
+              <UnstyledButton className={ShellStyle} onClick={() => toggleColorScheme()}>
+                {colorScheme === 'light' ? <SunLight /> : <HalfMoon />}
+              </UnstyledButton>
               <Link className={ShellStyle} to="/">
                 <Closet />
               </Link>
@@ -35,15 +39,16 @@ export const Shell = () => {
         <UnstyledButton className={ShellStyle}>Home</UnstyledButton>
         <UnstyledButton className={ShellStyle}>Blog</UnstyledButton>
         <UnstyledButton className={ShellStyle}>Contacts</UnstyledButton>
-        <UnstyledButton className={ShellStyle}>Support</UnstyledButton>
+        <UnstyledButton className={ShellStyle} onClick={() => toggleColorScheme()}>
+          {colorScheme === 'light' ? <SunLight /> : <HalfMoon />} Toggle
+        </UnstyledButton>
         <Link className={ShellStyle} to="/">
           <Closet /> Exit
         </Link>
       </AppShell.Navbar>
 
       <AppShell.Main>
-        Navbar is only visible on mobile, links that are rendered in the header on desktop are hidden on mobile in
-        header and rendered in navbar instead.
+        <CardsGrid />
       </AppShell.Main>
     </AppShell>
   )
