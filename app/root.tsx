@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
 import { useSessionListener } from '~/func/useSession'
+import { IconoirProvider } from 'iconoir-react'
 import { Toaster } from 'sonner'
 
 const queryClient = new QueryClient()
@@ -35,10 +36,16 @@ export default function App() {
   useSessionListener()
 
   return (
-    <>
+    <IconoirProvider
+      iconProps={{
+        strokeWidth: 1,
+        width: '24px',
+        height: '24px'
+      }}
+    >
       <Outlet />
       <Toaster closeButton />
-    </>
+    </IconoirProvider>
   )
 }
 

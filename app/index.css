@@ -267,11 +267,10 @@ a:not([class], :had(button)) {
   /* } */
 }
 
-/* a:has(button) {
-  all: reset;
-  color: inherit;
-  font: inherit;
-} */
+a:has(button):not(:last-child) {
+  margin-block-end: 12px;
+  margin-inline-end: 12px;
+}
 
 /* BUttons */
 
@@ -280,7 +279,10 @@ a:not([class], :had(button)) {
   --bg: var(--slate-3);
 
   padding: 0px 16px;
-  height: 40px;
+  height: 36px;
+
+  font-weight: 500;
+  font-size: 14px;
 
   border-radius: 4px;
   border-width: 1px;
@@ -341,48 +343,15 @@ a:not([class], :had(button)) {
     margin-block-end: 1rem;
   }
 
-  &
-    :where(
-      input:where(
-          [type='text'],
-          [type='email'],
-          [type='password'],
-          [type='search'],
-          [type='tel'],
-          [type='number'],
-          [type='date'],
-          [type='datetime-local'],
-          [type='month'],
-          [type='week'],
-          [type='url'],
-          [type='file']
-        ),
-      textarea,
-      select
-    ) {
+  & input:not([type='radio'], [type='checkbox'], [type='range']),
+  textarea,
+  select {
     display: block;
     width: 100%;
   }
 }
 
-:where(
-    input:where(
-        [type='text'],
-        [type='email'],
-        [type='password'],
-        [type='search'],
-        [type='tel'],
-        [type='number'],
-        [type='date'],
-        [type='datetime-local'],
-        [type='month'],
-        [type='week'],
-        [type='url']
-      ),
-    textarea,
-    select,
-
-  ) {
+:where(input:not([type='radio'], [type='checkbox'], [type='range']), textarea, select, ) {
   --color: var(--slate-12);
   --bg-color: var(--slate-2);
 
@@ -503,9 +472,10 @@ details summary::marker {
 :where(hr) {
   margin-block: 1em;
   border-color: grey;
-  border-style: dashed;
+  border-width: 1px;
 }
 
+/* PROGRESS */
 :where(progress) {
   height: 22px;
 }

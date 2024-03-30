@@ -34,6 +34,7 @@ export default function Index() {
           </>
         )}
       </div>
+      <br />
 
       <div>
         <Link prefetch="intent" to="/countries">

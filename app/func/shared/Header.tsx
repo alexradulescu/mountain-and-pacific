@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 import { css } from '@acab/ecsstatic'
 import { Link } from '@remix-run/react'
-import { LogOut, UserCircle } from 'iconoir-react'
+import { LogOut, User } from 'iconoir-react'
 
 import { supabase } from '~/utils/supabaseClient'
 
@@ -30,11 +30,11 @@ export const Header = () => {
             <span>{initials}</span>
             <Link to="/account" prefetch="intent">
               <button>
-                <UserCircle width={24} />
+                <User />
               </button>
             </Link>
             <button onClick={() => supabase.auth.signOut()}>
-              <LogOut width={24} />
+              <LogOut />
             </button>
           </>
         ) : (
