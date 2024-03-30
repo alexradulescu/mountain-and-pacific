@@ -1,5 +1,3 @@
-@layer reset, base, tokens, recipes, utilities;
-
 /*
 * Soul css V0.1
 * Free to use under the MIT license.
@@ -103,12 +101,12 @@
   background-color: var(--background);
 }
 
-:where(img, picture, video, canvas, svg):not([class]) {
+:where(img, picture, video, canvas, svg) {
   display: block;
   max-width: 100%;
 }
 
-:where(button, input, select, textarea, optgroup):not([class]) {
+:where(button, input, select, textarea, optgroup) {
   font: inherit;
   transition:
     color 0.25s,
@@ -124,7 +122,7 @@
   }
 }
 
-:where(a, button, select, textarea):not([class]) {
+:where(a, button, select, textarea) {
   outline-offset: 2px;
   outline-style: solid;
   outline-width: 1px;
@@ -135,99 +133,99 @@
   }
 }
 
-:where(p, h1, h2, h3, h4, h5, h6):not([class]) {
+:where(p, h1, h2, h3, h4, h5, h6) {
   overflow-wrap: break-word;
   text-wrap: balance;
   max-width: 75ch;
 }
 
-:where(h1, h2, h3, h4, h5, h6):not([class]) {
+:where(h1, h2, h3, h4, h5, h6) {
   font-family: var(--font-serif);
   color: var(--slate-12);
   font-weight: 500;
 }
 
-h1:not([class]) {
+h1 {
   font-size: 2em;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
 }
 
-small:not([class]) {
+small {
   font-weight: 400;
   font-size: 75%;
 }
 
-:where(#root, #__next):not([class]) {
+:where(#root, #__next) {
   isolation: isolate;
 }
 
 /* Description List */
-:where(dd):not([class]) {
+:where(dd) {
   margin-inline-start: 0;
   font-size: 14px;
 }
 
-:where(dt):not([class]) {
+:where(dt) {
   font-weight: 500;
   font-size: 18px;
 }
 
 /* Media */
-:where(img, video, audio):not([class]) {
+:where(img, video, audio) {
   max-width: 100%;
   margin-block-end: 8px;
 }
-:where(figure):not([class]) {
+:where(figure) {
   margin-inline: 0;
 
-  & > img:not([class]) {
+  & > img {
     margin-block-end: 0;
   }
 }
-:where(video):not([class]) {
+:where(video) {
   display: block;
 }
-:where(figcaption):not([class]) {
+:where(figcaption) {
   font-style: italic;
   color: var(--slate-11);
 }
 
-:where(main):not([class]) {
+:where(main) {
   max-width: 70ch;
   margin: 0 auto;
   padding: 0 8px;
 }
 
-:where(aside):not([class]) {
+:where(aside) {
   display: grid;
   grid-gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 }
 
-:where(fieldset):not([class]) {
+:where(fieldset) {
   padding: 16px;
   border: 1px solid var(--slate-6);
   border-radius: 12px;
   margin-block: 1rem;
 }
 
-table:not([class]) {
+table {
   max-width: 100%;
   border-collapse: collapse;
   border: 1px solid var(--slate-6);
 }
-:where(th, td):not([class]) {
+:where(th, td) {
   padding: 8px;
   text-align: left;
   border: 1px solid var(--slate-5);
 }
-th:not([class]) {
+th {
   font-weight: 500;
   background-color: var(--slate-2);
 }
 
-a:not([class]) {
+a:not([class], :had(button)) {
   --current-color: var(--sky-9);
   --current-bg-image: linear-gradient(
     color-mix(in srgb, var(--current-color) 30%, transparent),
@@ -269,9 +267,15 @@ a:not([class]) {
   /* } */
 }
 
+/* a:has(button) {
+  all: reset;
+  color: inherit;
+  font: inherit;
+} */
+
 /* BUttons */
 
-:where(button):not([class]) {
+:where(button) {
   --color: var(--slate-12);
   --bg: var(--slate-3);
 
@@ -330,7 +334,7 @@ a:not([class]) {
   }
 }
 
-:where(label:not(for)):not([class]) {
+:where(label:not(for)) {
   display: block;
   width: 100%;
   &:not(:last-child) {
@@ -415,13 +419,13 @@ a:not([class]) {
   }
 }
 
-:where(input:where([type='checkbox'], [type='radio'])):not([class]) {
+:where(input:where([type='checkbox'], [type='radio'])) {
   width: 18px;
   height: 18px;
   accent-color: var(--sky-9);
 }
 
-:where(input:where([type='file']::file-selector-button, [type='file']::-webkit-file-upload-button)):not([class]) {
+:where(input:where([type='file']::file-selector-button, [type='file']::-webkit-file-upload-button)) {
   --color: var(--slate-12);
   --bg: var(--slate-3);
 
@@ -450,14 +454,14 @@ a:not([class]) {
   }
 }
 
-:where(textarea, select[multiple]):not([class]) {
+:where(textarea, select[multiple]) {
   min-height: 78px;
   line-height: 1.3;
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
-:where(details):not([class]) {
+:where(details) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -490,18 +494,18 @@ a:not([class]) {
     margin-top: 0;
   }
 }
-details:not([class]) summary::-webkit-details-marker,
-details:not([class]) summary::marker {
+details summary::-webkit-details-marker,
+details summary::marker {
   display: none;
   content: '';
 }
 
-:where(hr):not([class]) {
+:where(hr) {
   margin-block: 1em;
   border-color: grey;
   border-style: dashed;
 }
 
-:where(progress):not([class]) {
+:where(progress) {
   height: 22px;
 }

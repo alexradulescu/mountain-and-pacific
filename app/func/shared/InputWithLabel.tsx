@@ -1,20 +1,16 @@
-import { FormLabel } from '~/ui/form-label'
-import { Input, type InputProps } from '~/ui/input'
-import { Stack } from 'styled-system/jsx'
+import { HTMLProps } from 'react'
 
-interface Props extends InputProps {
+interface Props extends HTMLProps<HTMLInputElement> {
   label: string
 }
 
 export const InputWithLabel = (props: Props) => {
-  const { label, name, ...restOfProps } = props
+  const { label, ...restOfProps } = props
 
   return (
-    <Stack gap="1" width="full">
-      <FormLabel fontSize={'md'} fontWeight={'400'} htmlFor={name}>
-        {label}
-      </FormLabel>
-      <Input id={name} {...restOfProps} />
-    </Stack>
+    <label>
+      <span>{label}</span>
+      <input {...restOfProps} />
+    </label>
   )
 }
