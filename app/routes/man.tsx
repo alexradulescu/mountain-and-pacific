@@ -37,7 +37,7 @@ export const Shell = () => {
         <UnstyledButton className={ShellStyle}>Contacts</UnstyledButton>
         <UnstyledButton className={ShellStyle}>Support</UnstyledButton>
         <Link className={ShellStyle} to="/">
-          <Closet />
+          <Closet /> Exit
         </Link>
       </AppShell.Navbar>
 
@@ -52,12 +52,17 @@ export const Shell = () => {
 export default Shell
 
 const ShellStyle = css`
-  display: block;
+  display: flex;
+  align-items: center;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
   border-radius: var(--mantine-radius-md);
   font-weight: 500;
 
   @mixin hover {
     background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  }
+
+  &a {
+    text-decoration: none;
   }
 `
