@@ -19,9 +19,6 @@ export default function Index() {
             <Link prefetch="intent" to="/account">
               <button>Account</button>
             </Link>
-            <Link prefetch="intent" to="/man">
-              <button>Brainy</button>
-            </Link>
           </>
         ) : (
           <>
@@ -40,6 +37,12 @@ export default function Index() {
       <br />
 
       <div>
+        <Link prefetch="intent" to="/man">
+          <button>Brainy</button>
+        </Link>
+        <Link prefetch="intent" to="/sdta">
+          <button>SDTA</button>
+        </Link>
         <Link prefetch="intent" to="/countries">
           <button>Countries</button>
         </Link>
