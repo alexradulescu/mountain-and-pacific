@@ -1,3 +1,4 @@
+import { Link } from '@remix-run/react'
 import { useQuery } from '@tanstack/react-query'
 import { useSessionStore } from '~/func/useSession'
 
@@ -6,7 +7,7 @@ import { supabase } from '~/utils/supabaseClient'
 const getCohorts = async (userId?: string) => {
   const { data: user_cohorts, error } = await supabase
     .from('user_cohorts')
-    .select('id,user_id,cohort_id')
+    .select('*, cohorts (*)')
     .eq('user_id', userId)
 
   if (error) {
@@ -39,23 +40,37 @@ const getUserDeliverables = async (userId?: string) => {
   }
 }
 
-const getUserCohortDeliverables = async (userId?: string) => {
+const getUserComments = async (userId?: string, deliverableId?: string) => {
+  const { data: comments, error } = await supabase
+    .from('comments')
+    .select('*')
+    .eq('user_id', userId)
+    .eq('deliverable_id', deliverableId)
+
+  if (error) {
+    throw new Error(error.message)
+  }
+
+  if (comments) {
+    return comments
+  }
+}
+
+const getAll = async (userId?: string) => {
   const { data: user_deliverables, error } = await supabase
-    .from('user_cohorts')
+    .from('user_deliverables')
     .select(
       `
       *,
-      cohort_deliverables (
+      deliverables (
         *,
         comments (
-          *,
-          
+          *
         )
       )
     `
     )
     .eq('user_id', userId)
-  // .eq('cohort_id', 'cohort_id')
 
   if (error) {
     throw new Error(error.message)
@@ -84,9 +99,14 @@ export const Sdta = () => {
     queryFn: ({ queryKey }) => getUserDeliverables(queryKey[1]),
     enabled: Boolean(session?.user.id)
   })
-  const { data: userCohortDeliverables } = useQuery({
-    queryKey: ['userDeliverables', session?.user.id],
-    queryFn: ({ queryKey }) => getUserCohortDeliverables(queryKey[1]),
+  const { data: userComments } = useQuery({
+    queryKey: ['userComments', session?.user.id],
+    queryFn: ({ queryKey }) => getUserComments(queryKey[1], '2'),
+    enabled: Boolean(session?.user.id)
+  })
+  const { data: all } = useQuery({
+    queryKey: ['all', session?.user.id],
+    queryFn: ({ queryKey }) => getAll(queryKey[1]),
     enabled: Boolean(session?.user.id)
   })
 
@@ -97,14 +117,35 @@ export const Sdta = () => {
   return (
     <>
       <h1>SDTA</h1>
-      <h2>User: </h2>
-      <h2>User cohort</h2>
-      <pre>{JSON.stringify(userCohorts, null, 2)}</pre>
+      <h2 key={userCohorts![0].cohort_id}>
+        You are part of <u>{userCohorts ? userCohorts[0].cohorts.title : '🤔'}</u>
+        {userCohorts ? (
+          <small>
+            <br />
+            {userCohorts[0].cohorts.description}
+          </small>
+        ) : null}
+      </h2>
+      <hr />
       <h2>User deliverables (in the cohort)</h2>
+      <ul>
+        {userDeliverables?.map((deliverable) => (
+          <li key={deliverable.id}>
+            <Link to={`/sdta/${deliverable.id}`}>
+              {deliverable.deliverables.title}
+              <br />
+              {deliverable.deliverables.description}
+            </Link>
+          </li>
+        ))}
+      </ul>
       <pre>{JSON.stringify(userDeliverables, null, 2)}</pre>
-      <h2>User cohort deliverables (in the cohort)</h2>
-      <pre>{JSON.stringify(userCohortDeliverables, null, 2)}</pre>
-      <h2>Comments in user deliverables</h2>
+      <hr />
+      <h2>User deliverable comments (in the cohort)</h2>
+      <pre>{JSON.stringify(userComments, null, 2)}</pre>
+      <hr />
+      <h2>All?</h2>
+      <pre>{JSON.stringify(all, null, 2)}</pre>
     </>
   )
 }
