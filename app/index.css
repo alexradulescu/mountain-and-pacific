@@ -282,31 +282,28 @@ main:has(.soul) {
     /* } */
   }
 
-  a:has(button):not(:last-child) {
-    margin-block-end: 12px;
-    margin-inline-end: 12px;
-  }
-
   /* BUttons */
 
   :where(button):not([class]) {
     --color: var(--slate-12);
     --bg: var(--slate-3);
 
-    padding: 0px 16px;
-    height: 40px;
+    padding: 0px 12px;
+    height: 36px;
 
     border-radius: 4px;
     border-width: 1px;
     border-style: solid;
+    font-size: 14px;
+    font-weight: 500;
 
     color: var(--color);
     background-color: var(--bg);
     border-color: var(--bg);
 
     &:not(:last-child) {
-      margin-block-end: 12px;
-      margin-inline-end: 12px;
+      margin-block-end: 8px;
+      margin-inline-end: 8px;
     }
 
     &[type='submit'] {

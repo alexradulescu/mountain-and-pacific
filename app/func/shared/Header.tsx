@@ -24,7 +24,7 @@ export const Header = () => {
         <button>Back</button>
       </Link>
 
-      <div>
+      <div className={HStack}>
         {initials ? (
           <>
             <span>{initials}</span>
@@ -50,5 +50,6 @@ export const Header = () => {
 const HStack = css`
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.8rem;
 `

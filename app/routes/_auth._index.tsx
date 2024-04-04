@@ -39,16 +39,15 @@ export default function Index() {
       <div>
         <Link prefetch="intent" to="/man">
           <button>Brainy</button>
-        </Link>
+        </Link>{' '}
         <Link prefetch="intent" to="/sdta">
           <button>SDTA</button>
-        </Link>
-        <Link prefetch="intent" to="/countries">
-          <button>Countries</button>
-        </Link>
+        </Link>{' '}
+        <br />
+        <br />
         <Link prefetch="intent" to="/components">
           <button>Components</button>
-        </Link>
+        </Link>{' '}
         <Link prefetch="intent" to="/taxes">
           <button>Taxes</button>
         </Link>
