@@ -4,20 +4,6 @@ import { useSessionStore } from '~/func/useSession'
 
 import { supabase } from '~/utils/supabaseClient'
 
-const getCohorts = async (userId?: string) => {
-  const { data: user_cohorts, error } = await supabase
-    .from('user_cohorts')
-    .select('*, cohorts (*)')
-    .eq('user_id', userId)
-
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (user_cohorts) {
-    return user_cohorts
-  }
-}
 const getUserDeliverables = async (userId?: string, deliverableId?: string) => {
   const { data: user_deliverables, error } = await supabase
     .from('user_deliverables')
@@ -26,7 +12,12 @@ const getUserDeliverables = async (userId?: string, deliverableId?: string) => {
       *,
       deliverables (
         *,
-        comments (*)
+        comments (
+          *,
+          profiles (
+            *
+          )
+        )
       )
     `
     )
@@ -39,22 +30,6 @@ const getUserDeliverables = async (userId?: string, deliverableId?: string) => {
 
   if (user_deliverables) {
     return user_deliverables
-  }
-}
-
-const getUserComments = async (userId?: string, deliverableId?: string) => {
-  const { data: comments, error } = await supabase
-    .from('comments')
-    .select('*')
-    .eq('user_id', userId)
-    .eq('deliverable_id', deliverableId)
-
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  if (comments) {
-    return comments
   }
 }
 
@@ -79,9 +54,29 @@ export const SdtaDetails = () => {
 
   return (
     <>
-      <h1>SDTA: Deliverabled</h1>
-
-      <pre>{JSON.stringify(userDeliverableComments, null, 2)}</pre>
+      <h1>
+        SDTA: Deliverable{' '}
+        <small>
+          <Link to="/sdta"> back</Link>{' '}
+        </small>
+      </h1>
+      <h2>{userDeliverableComments![0].deliverables.title}</h2>
+      {userDeliverableComments![0].approved_by ? (
+        <p>Approved by {userDeliverableComments![0].approved_by}</p>
+      ) : (
+        <p>Not approved yet</p>
+      )}
+      <ul>
+        {userDeliverableComments![0].deliverables.comments.map((comment) => (
+          <li key={comment.id}>
+            <p>
+              {comment.content}
+              <br />
+              <small>by {comment.profiles.username}</small>
+            </p>
+          </li>
+        ))}
+      </ul>
     </>
   )
 }

@@ -139,13 +139,6 @@ export const Sdta = () => {
           </li>
         ))}
       </ul>
-      <pre>{JSON.stringify(userDeliverables, null, 2)}</pre>
-      <hr />
-      <h2>User deliverable comments (in the cohort)</h2>
-      <pre>{JSON.stringify(userComments, null, 2)}</pre>
-      <hr />
-      <h2>All?</h2>
-      <pre>{JSON.stringify(all, null, 2)}</pre>
     </>
   )
 }
