@@ -1,8 +1,7 @@
 import { css } from '@acab/ecsstatic'
 import { AppShell, Burger, Group, UnstyledButton, useMantineColorScheme } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { Link } from '@remix-run/react'
-import { CardsGrid } from '~/func/CardsGrid'
+import { Link, Outlet } from '@remix-run/react'
 import { Brain, Closet, HalfMoon, SunLight } from 'iconoir-react'
 
 export const Shell = () => {
@@ -17,9 +16,10 @@ export const Shell = () => {
     >
       <AppShell.Header>
         <Group h="100%" px="md">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Group justify="space-between" style={{ flex: 1 }}>
-            <Brain />
+            <Link className={ShellStyle} to="/man">
+              <Brain />
+            </Link>
             <Group ml="xl" gap={0} visibleFrom="sm">
               <UnstyledButton className={ShellStyle}>Home</UnstyledButton>
               <UnstyledButton className={ShellStyle}>Blog</UnstyledButton>
@@ -32,6 +32,8 @@ export const Shell = () => {
               </Link>
             </Group>
           </Group>
+
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         </Group>
       </AppShell.Header>
 
@@ -48,7 +50,7 @@ export const Shell = () => {
       </AppShell.Navbar>
 
       <AppShell.Main>
-        <CardsGrid />
+        <Outlet />
       </AppShell.Main>
     </AppShell>
   )

@@ -44,7 +44,6 @@ export default function Index() {
           <button>SDTA</button>
         </Link>{' '}
         <br />
-        <br />
         <Link prefetch="intent" to="/components">
           <button>Components</button>
         </Link>{' '}

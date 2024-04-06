@@ -52,5 +52,5 @@ const HStack = css`
   justify-content: space-between;
   align-items: center;
   gap: 0.8rem;
-  margin-block-end: 0.8rem;
+  padding: 0.4rem 0;
 `
