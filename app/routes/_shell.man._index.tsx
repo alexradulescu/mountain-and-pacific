@@ -28,7 +28,12 @@ export const Man = () => {
     <Stack gap="sm">
       <Group gap="sm">
         {allLinks.map((link) => (
-          <Button component={Link} to={link.to} key={link.title} leftSection={<link.icon width={16} />}>
+          <Button
+            component={Link}
+            to={link.to}
+            key={link.title}
+            leftSection={<link.icon width={16} fontWeight={500} />}
+          >
             {link.title}
           </Button>
         ))}
@@ -36,7 +41,12 @@ export const Man = () => {
       {session?.user ? (
         <Group gap="sm">
           {authLinks.map((link) => (
-            <Button component={Link} to={link.to} key={link.title} leftSection={<link.icon width={16} />}>
+            <Button
+              component={Link}
+              to={link.to}
+              key={link.title}
+              leftSection={<link.icon width={16} fontWeight={'500'} />}
+            >
               {link.title}
             </Button>
           ))}
@@ -44,7 +54,12 @@ export const Man = () => {
       ) : (
         <Group gap="sm">
           {anonLinks.map((link) => (
-            <Button component={Link} to={link.to} key={link.title} leftSection={<link.icon width={16} />}>
+            <Button
+              component={Link}
+              to={link.to}
+              key={link.title}
+              leftSection={<link.icon width={16} fontWeight={'500'} />}
+            >
               {link.title}
             </Button>
           ))}

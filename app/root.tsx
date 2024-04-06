@@ -8,9 +8,10 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/reac
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Analytics } from '@vercel/analytics/react'
-import { useSessionListener } from '~/func/useSession'
 import { IconoirProvider } from 'iconoir-react'
 import { Toaster } from 'sonner'
+
+import { useSessionListener } from '~/func/useSession'
 
 const queryClient = new QueryClient()
 const theme = createTheme({
@@ -22,7 +23,7 @@ const Providers = ({ children }: { children: ReactNode }) => (
     <MantineProvider theme={theme} defaultColorScheme="dark">
       <IconoirProvider
         iconProps={{
-          strokeWidth: 1,
+          strokeWidth: 1.5,
           width: '24px',
           height: '24px'
         }}
