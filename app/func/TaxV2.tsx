@@ -79,6 +79,7 @@ export const TaxV2: React.FC = () => {
           className="form-control"
           pattern="[0-9]*"
           inputMode="numeric"
+          size="md"
           onChange={(e) => setMonthlySalary1(parseFloat(e.target.value) || 0)}
         />
         <TextInput
@@ -89,6 +90,7 @@ export const TaxV2: React.FC = () => {
           className="form-control"
           pattern="[0-9]*"
           inputMode="numeric"
+          size="md"
           onChange={(e) => setBonus1(parseFloat(e.target.value) || 0)}
         />
       </Group>
@@ -101,6 +103,7 @@ export const TaxV2: React.FC = () => {
           className="form-control"
           pattern="[0-9]*"
           inputMode="numeric"
+          size="md"
           onChange={(e) => setMonthlySalary2(parseFloat(e.target.value) || 0)}
         />
         <TextInput
@@ -111,6 +114,7 @@ export const TaxV2: React.FC = () => {
           className="form-control"
           pattern="[0-9]*"
           inputMode="numeric"
+          size="md"
           onChange={(e) => setBonus2(parseFloat(e.target.value) || 0)}
         />
       </Group>
