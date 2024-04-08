@@ -5,7 +5,7 @@ import { Brain, EmojiThinkLeft, GridPlus, LogIn, LogOut, MoneySquare, PlusSquare
 import { useSessionStore } from '~/func/useSession'
 
 const anonLinks = [
-  { title: 'Login', icon: LogIn, color: 'red', to: '/login' },
+  { title: 'Login', icon: LogIn, color: 'red', to: '/man/login' },
   { title: 'Register', icon: PlusSquare, color: 'red', to: '/register' },
   { title: 'Forgot', icon: EmojiThinkLeft, color: 'red', to: '/forgot' }
 ]
@@ -63,7 +63,7 @@ export const Man = () => {
               key={link.title}
               leftSection={<link.icon width={16} fontWeight={'500'} />}
               variant="light"
-              color="grape"
+              color="teal"
             >
               {link.title}
             </Button>
