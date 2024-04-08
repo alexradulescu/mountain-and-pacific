@@ -19,10 +19,13 @@ import { InfoCircle } from 'iconoir-react'
 
 import { supabase } from '~/utils/supabaseClient'
 
+import { useSessionStore } from './useSession'
+
 export function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const session = useSessionStore((state) => state.session)
 
   const {
     mutate: mutateWithOtp,
@@ -94,6 +97,11 @@ export function Login() {
       </Text>
 
       <Paper component={'form'} withBorder shadow="md" p={24} mt={30} radius="md" onSubmit={handleLoginWithPassword}>
+        {session?.user ? (
+          <Alert variant="light" color="cyan" title="" icon={<InfoCircle />} mb="md">
+            You're already logged in, but showing you the page for fun 🖖🎉
+          </Alert>
+        ) : null}
         {errorWithPassword ? (
           <Alert variant="light" color="red" title="" icon={<InfoCircle />} mb="md">
             {errorWithPassword.message}
@@ -131,9 +139,9 @@ export function Login() {
           Login with password
         </Button>
         <Text c="dimmed" size="sm" ta="center" mt={5}>
-          OR
+          or
         </Text>
-        <Button variant="subtle" fullWidth onClick={handleLoginWithOtp} disabled={isPendingWithOtp}>
+        <Button variant="subtle" size="xs" fullWidth onClick={handleLoginWithOtp} disabled={isPendingWithOtp}>
           Login with magic link
         </Button>
       </Paper>

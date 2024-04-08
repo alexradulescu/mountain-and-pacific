@@ -39,37 +39,37 @@ export const Man = () => {
           </Button>
         ))}
       </Group>
-      {session?.user ? (
-        <Group gap="sm">
-          {authLinks.map((link) => (
-            <Button
-              component={Link}
-              to={link.to}
-              key={link.title}
-              leftSection={<link.icon width={16} fontWeight={'500'} />}
-              variant="light"
-              color="blue"
-            >
-              {link.title}
-            </Button>
-          ))}
-        </Group>
-      ) : (
-        <Group gap="sm">
-          {anonLinks.map((link) => (
-            <Button
-              component={Link}
-              to={link.to}
-              key={link.title}
-              leftSection={<link.icon width={16} fontWeight={'500'} />}
-              variant="light"
-              color="teal"
-            >
-              {link.title}
-            </Button>
-          ))}
-        </Group>
-      )}
+      {/* {session?.user ? ( */}
+      <Group gap="sm">
+        {authLinks.map((link) => (
+          <Button
+            component={Link}
+            to={link.to}
+            key={link.title}
+            leftSection={<link.icon width={16} fontWeight={'500'} />}
+            variant="light"
+            color="blue"
+          >
+            {link.title}
+          </Button>
+        ))}
+      </Group>
+      {/* ) : ( */}
+      <Group gap="sm">
+        {anonLinks.map((link) => (
+          <Button
+            component={Link}
+            to={link.to}
+            key={link.title}
+            leftSection={<link.icon width={16} fontWeight={'500'} />}
+            variant="light"
+            color="teal"
+          >
+            {link.title}
+          </Button>
+        ))}
+      </Group>
+      {/* )} */}
     </Stack>
   )
 }
