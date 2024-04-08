@@ -15,7 +15,9 @@ import { useSessionListener } from '~/func/useSession'
 
 const queryClient = new QueryClient()
 const theme = createTheme({
-  scale: 1.6
+  scale: 1.6,
+  primaryColor: 'cyan',
+  primaryShade: 9
 })
 
 const Providers = ({ children }: { children: ReactNode }) => (

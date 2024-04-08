@@ -33,6 +33,7 @@ export const Man = () => {
             to={link.to}
             key={link.title}
             leftSection={<link.icon width={16} fontWeight={500} />}
+            variant="light"
           >
             {link.title}
           </Button>
@@ -46,6 +47,8 @@ export const Man = () => {
               to={link.to}
               key={link.title}
               leftSection={<link.icon width={16} fontWeight={'500'} />}
+              variant="light"
+              color="blue"
             >
               {link.title}
             </Button>
@@ -59,6 +62,8 @@ export const Man = () => {
               to={link.to}
               key={link.title}
               leftSection={<link.icon width={16} fontWeight={'500'} />}
+              variant="light"
+              color="grape"
             >
               {link.title}
             </Button>

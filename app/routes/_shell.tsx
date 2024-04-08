@@ -13,8 +13,9 @@ export const Shell = () => {
       header={{ height: 60 }}
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
       padding="md"
+      bg={'dark.9'}
     >
-      <AppShell.Header>
+      <AppShell.Header bg={'dark.9'}>
         <Group h="100%" px="md">
           <Group justify="space-between" style={{ flex: 1 }}>
             <Link className={ShellStyle} to="/man">
@@ -37,7 +38,7 @@ export const Shell = () => {
         </Group>
       </AppShell.Header>
 
-      <AppShell.Navbar py="md" px={4}>
+      <AppShell.Navbar py="md" px={4} bg={'dark.9'}>
         <UnstyledButton className={ShellStyle}>Home</UnstyledButton>
         <UnstyledButton className={ShellStyle}>Blog</UnstyledButton>
         <UnstyledButton className={ShellStyle}>Contacts</UnstyledButton>
