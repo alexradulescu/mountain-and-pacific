@@ -5,30 +5,30 @@ import { Group, NumberFormatter, Stack, Table, TextInput, Title } from '@mantine
 function calculateTax(income: number): number {
   if (income <= 20000) {
     return 0
-  } else if (income <= 30000) {
-    return 200 + (income - 20000) * 0.02
-  } else if (income <= 40000) {
-    return 350 + (income - 30000) * 0.035
-  } else if (income <= 80000) {
-    return 550 + (income - 40000) * 0.07
-  } else if (income <= 120000) {
-    return 3350 + (income - 80000) * 0.115
-  } else if (income <= 160000) {
-    return 7950 + (income - 120000) * 0.15
-  } else if (income <= 200000) {
-    return 13950 + (income - 160000) * 0.18
-  } else if (income <= 240000) {
-    return 21150 + (income - 200000) * 0.19
-  } else if (income <= 280000) {
-    return 28750 + (income - 240000) * 0.195
-  } else if (income <= 320000) {
-    return 36550 + (income - 280000) * 0.2
-  } else if (income <= 500000) {
-    return 44550 + (income - 320000) * 0.22
-  } else if (income <= 1000000) {
-    return 84150 + (income - 500000) * 0.23
+  } else if (income <= 30_000) {
+    return 0 + (income - 20_000) * 0.02
+  } else if (income <= 40_000) {
+    return 200 + (income - 30_000) * 0.035
+  } else if (income <= 80_000) {
+    return 550 + (income - 40_000) * 0.07
+  } else if (income <= 120_000) {
+    return 3350 + (income - 80_000) * 0.115
+  } else if (income <= 160_000) {
+    return 7950 + (income - 120_000) * 0.15
+  } else if (income <= 200_000) {
+    return 13950 + (income - 160_000) * 0.18
+  } else if (income <= 240_000) {
+    return 21150 + (income - 200_000) * 0.19
+  } else if (income <= 280_000) {
+    return 28750 + (income - 240_000) * 0.195
+  } else if (income <= 320_000) {
+    return 36550 + (income - 280_000) * 0.2
+  } else if (income <= 500_000) {
+    return 44550 + (income - 320_000) * 0.22
+  } else if (income <= 1_000_000) {
+    return 84150 + (income - 500_000) * 0.23
   } else {
-    return 199150 + (income - 1000000) * 0.24
+    return 199150 + (income - 1_000_000) * 0.24
   }
 }
 
